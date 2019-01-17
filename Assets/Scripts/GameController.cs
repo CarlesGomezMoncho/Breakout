@@ -37,7 +37,7 @@ public class GameController : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump") && !gameStarted)
         {
-            ballController.Iniciar();
+            ballController.IniciarMovimiento();
             gameStarted = true;
         }
 
