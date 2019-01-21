@@ -28,17 +28,20 @@ public class BallController : MonoBehaviour
         //si se queda fijo en un eje, le modificamos un poco su velocidad
         if(rb.velocity.x == 0)
         {
-            rb.velocity = rb.velocity + new Vector2(1, 0);
+            //rb.velocity = rb.velocity + new Vector2(1, 0);
+            rb.velocity = new Vector2(0.1f, rb.velocity.y - 0.1f).normalized * rb.velocity.magnitude;
         }
 
         if (rb.velocity.y == 0)
         {
-            rb.velocity = rb.velocity + new Vector2(0, 1);
+            //rb.velocity = rb.velocity + new Vector2(0, 1);
+            rb.velocity = new Vector2(rb.velocity.x - 0.1f,  0.1f).normalized * rb.velocity.magnitude;
         }
 
         if (text)
         {
-            text.text = rb.velocity.ToString();
+            text.text = "direction: " + rb.velocity.normalized.ToString();
+            text.text = text.text + "\nVelocity: " + rb.velocity.magnitude;
         }
     }
 
@@ -52,8 +55,17 @@ public class BallController : MonoBehaviour
 
     public void IniciarMovimiento()
     {
-        iniciada = true;
-        impulsa = true; //impulso inicial
+        if (!iniciada)
+        {
+            iniciada = true;
+            impulsa = true; //impulso inicial
+        }
+    }
+
+    public void PararMovimiento()
+    {
+        iniciada = false;
+        rb.velocity = Vector2.zero; //frenamos la pelota
     }
 
     //impulsa aleatoriamente la pelota hacia arriba
@@ -126,7 +138,8 @@ public class BallController : MonoBehaviour
             //la dirección. En cambio si golpea cerca de los bordes, se modifica la dirección actual en +1 (si golpea en la parte derecha) o en -1
             //(si golpea en la parte izquierda) como el valor sera un valor decimal se normaliza, para que si es mayor que 0 sea 1 y si es menor que 0
             //sea -1 y asi se modificará en cada golpeo la dirección de la pelota en +1, 0 o -1 dependiendo de la zona en la que golpee la pelota en la raqueta.
-            rb.velocity = rb.velocity + new Vector2(x, 0).normalized;
+            //rb.velocity = rb.velocity + new Vector2(x, 0).normalized;
+            rb.velocity = new Vector2(rb.velocity.x + x, rb.velocity.y).normalized * rb.velocity.magnitude;
         }
     }
 }
