@@ -29,13 +29,13 @@ public class BallController : MonoBehaviour
         if(rb.velocity.x == 0)
         {
             //rb.velocity = rb.velocity + new Vector2(1, 0);
-            rb.velocity = new Vector2(0.1f, rb.velocity.y - 0.1f).normalized * rb.velocity.magnitude;
+            rb.velocity = new Vector2(1f, rb.velocity.y - 1f).normalized * rb.velocity.magnitude;
         }
 
         if (rb.velocity.y == 0)
         {
             //rb.velocity = rb.velocity + new Vector2(0, 1);
-            rb.velocity = new Vector2(rb.velocity.x - 0.1f,  0.1f).normalized * rb.velocity.magnitude;
+            rb.velocity = new Vector2(rb.velocity.x - 1f,  1f).normalized * rb.velocity.magnitude;
         }
 
         if (text)

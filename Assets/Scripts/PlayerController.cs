@@ -9,19 +9,24 @@ public class PlayerController : MonoBehaviour
     private GameObject pelota;
     private bool IAEnabled = false;
 
-    private float oldHorizontal = 0;
+    private float posicionX;
+    private float posicionY;
+
+    private float oldHorizontal;
 
     void Start()
     {
         GetSpriteWidth();
         pelota = GameObject.FindGameObjectsWithTag("Pelota")[0];
+
+        oldHorizontal = 0;
+        posicionX = 0;
+        posicionY = transform.position.y;
     }
 
     void Update()
     {
         float horizontal;
-        float posicionX = 0;
-        float posicionY = transform.position.y;
 
         if (IAEnabled)
         {
