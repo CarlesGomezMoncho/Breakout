@@ -23,19 +23,45 @@ public class BallController : MonoBehaviour
     void Update()
     {
         if (!iniciada)
+        {
             transform.position = centroRaqueta.position;
+        }
 
         //si se queda fijo en un eje, le modificamos un poco su velocidad
-        if(rb.velocity.x == 0)
+        if (rb.velocity.x == 0)
         {
+            float rnd = Random.value;
+            float x;
+
+            if (rnd> 0.5f)
+            {
+                x = 1;
+            }
+            else
+            {
+                x = -1;
+            }
+
             //rb.velocity = rb.velocity + new Vector2(1, 0);
-            rb.velocity = new Vector2(1f, rb.velocity.y - 1f).normalized * rb.velocity.magnitude;
+            rb.velocity = new Vector2(x, rb.velocity.y - 1f).normalized * rb.velocity.magnitude;
         }
 
         if (rb.velocity.y == 0)
         {
+            float rnd = Random.value;
+            float y;
+
+            if (rnd > 0.5f)
+            {
+                y = 1;
+            }
+            else
+            {
+                y = -1;
+            }
+
             //rb.velocity = rb.velocity + new Vector2(0, 1);
-            rb.velocity = new Vector2(rb.velocity.x - 1f,  1f).normalized * rb.velocity.magnitude;
+            rb.velocity = new Vector2(rb.velocity.x - 1f,  y).normalized * rb.velocity.magnitude;
         }
 
         if (text)
@@ -119,6 +145,12 @@ public class BallController : MonoBehaviour
                 tileMap.SetTile(tileMap.WorldToCell(hitPositionI), null);
                 tileMap.SetTile(tileMap.WorldToCell(hitPositionD), null);
             }
+
+            //si limpiamos tiles cambiamos de nivel
+            if (GameController.instance.TileCount() == 0)
+            {
+                GameController.instance.EndLevel();
+            }
         }
         else if (collision.gameObject.name == "Raqueta")
         {
@@ -142,4 +174,6 @@ public class BallController : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x + x, rb.velocity.y).normalized * rb.velocity.magnitude;
         }
     }
+
+    
 }

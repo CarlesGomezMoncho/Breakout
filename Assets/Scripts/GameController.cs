@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.Tilemaps;
 
 public class GameController : MonoBehaviour
 {
@@ -10,6 +12,11 @@ public class GameController : MonoBehaviour
     public GameObject pelota;
 
     public GameObject PanelStart;
+
+    public Tilemap tileMap;
+
+    public Animator startAnim;
+    public Animator fadeAnim;
 
     private BallController ballController;
     private PlayerController playerController;
@@ -32,10 +39,19 @@ public class GameController : MonoBehaviour
     {
         ballController = pelota.GetComponent<BallController>();
         ballController.centroRaqueta = centroRaqueta;
+        ballController.tileMap = tileMap;
 
         playerController = raqueta.GetComponent <PlayerController>();
 
-        ReStartGame();
+        if (SceneManager.GetActiveScene().buildIndex != 0)
+        {
+            gameStarted = true;
+            StartLevel();
+        }
+        else
+        {
+            StartDemo();
+        }
     }
 
     void Update()
@@ -43,10 +59,11 @@ public class GameController : MonoBehaviour
         //si pulsamos Espacio o botón de salto en un mando
         if (Input.GetButtonDown("Jump"))
         {
-            //si el juego no está iniciado, lo inicia
+            //si el juego no está iniciado, lo inicia y carga el primer nivel
             if (!gameStarted)
             {
-                StartGame();
+                startAnim.SetTrigger("StartGame");
+                //SceneManager.LoadScene(1);
             }
             //si el juego si está iniciado, inicia el movimiento de la pelota
             else
@@ -57,7 +74,7 @@ public class GameController : MonoBehaviour
 
     }
 
-    public void ReStartGame()
+    public void StartDemo()
     {
         //iniciamos pantalla Start
         PanelStart.SetActive(true);
@@ -75,7 +92,7 @@ public class GameController : MonoBehaviour
         playerController.StartIA();
     }
 
-    public void StartGame()
+    public void StartLevel()
     {
         //pone el juego en estado activo
         gameStarted = true;
@@ -92,4 +109,36 @@ public class GameController : MonoBehaviour
         //desactiva IA Raqueta
         playerController.StartIA(false);
     }
+
+    public void EndLevel()
+    {
+        //si no está en pantalla inicial
+        if (SceneManager.GetActiveScene().buildIndex != 0)
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        else
+            SceneManager.LoadScene(0);
+    }
+
+    public int TileCount()
+    {
+        //Contamos el numero de tiles que existen
+        BoundsInt bounds = tileMap.cellBounds;
+        TileBase[] allTiles = tileMap.GetTilesBlock(bounds);
+        int numBlocks = 0;
+
+        for (int x = 0; x < bounds.size.x; x++)
+        {
+            for (int y = 0; y < bounds.size.y; y++)
+            {
+                TileBase tile = allTiles[x + y * bounds.size.x];
+                if (tile != null)
+                {
+                    numBlocks++;
+                }
+            }
+        }
+
+        return numBlocks;
+    }
+
 }
