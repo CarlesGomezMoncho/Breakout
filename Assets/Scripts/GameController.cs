@@ -17,6 +17,7 @@ public class GameController : MonoBehaviour
 
     public Animator startAnim;
     public Animator fadeAnim;
+    public Animator levelCompletedAnim;
 
     private BallController ballController;
     private PlayerController playerController;
@@ -42,6 +43,8 @@ public class GameController : MonoBehaviour
         ballController.tileMap = tileMap;
 
         playerController = raqueta.GetComponent <PlayerController>();
+
+        levelCompletedAnim.gameObject.SetActive(false);
 
         if (SceneManager.GetActiveScene().buildIndex != 0)
         {
@@ -114,7 +117,11 @@ public class GameController : MonoBehaviour
     {
         //si no está en pantalla inicial
         if (SceneManager.GetActiveScene().buildIndex != 0)
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        {
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            levelCompletedAnim.gameObject.SetActive(true);
+            levelCompletedAnim.SetTrigger("endLevel");
+        }
         else
             SceneManager.LoadScene(0);
     }

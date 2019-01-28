@@ -430,27 +430,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 3428352322677159702}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1003893086 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 490830857806867168, guid: dc25bb35a6259d540b1e2c89ba316cb6,
-    type: 3}
-  m_PrefabInstance: {fileID: 490830857780264812}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1003893087
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1003893086}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd8d609ac67d6c547b9720f5ba605258, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fadeAnimator: {fileID: 0}
-  levelTextAnimator: {fileID: 0}
-  LevelText: {fileID: 0}
 --- !u!1 &1007789523
 GameObject:
   m_ObjectHideFlags: 0
@@ -1474,6 +1453,12 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
+--- !u!95 &1056234032 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1056234032, guid: 02cf1d68eec14474c9bcf38b8f762230,
+    type: 3}
+  m_PrefabInstance: {fileID: 533776781816153639}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1216425904
 GameObject:
   m_ObjectHideFlags: 0
@@ -1956,6 +1941,11 @@ PrefabInstance:
       propertyPath: fadeAnim
       value: 
       objectReference: {fileID: 164220941}
+    - target: {fileID: 490830857806867169, guid: dc25bb35a6259d540b1e2c89ba316cb6,
+        type: 3}
+      propertyPath: levelCompletedAnim
+      value: 
+      objectReference: {fileID: 1056234032}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc25bb35a6259d540b1e2c89ba316cb6, type: 3}
 --- !u!1001 &533776781816153639
@@ -2110,6 +2100,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1118111179636323720, guid: 02cf1d68eec14474c9bcf38b8f762230,
         type: 3}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 825865915, guid: 02cf1d68eec14474c9bcf38b8f762230, type: 3}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 825865915, guid: 02cf1d68eec14474c9bcf38b8f762230, type: 3}
       propertyPath: m_isInputParsingRequired
       value: 1
       objectReference: {fileID: 0}

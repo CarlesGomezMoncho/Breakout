@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 490830857806867170}
   - component: {fileID: 490830857806867169}
+  - component: {fileID: 1003893087}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -47,3 +48,22 @@ MonoBehaviour:
   centroRaqueta: {fileID: 0}
   pelota: {fileID: 0}
   PanelStart: {fileID: 0}
+  tileMap: {fileID: 0}
+  startAnim: {fileID: 0}
+  fadeAnim: {fileID: 0}
+  levelCompletedAnim: {fileID: 0}
+--- !u!114 &1003893087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 490830857806867168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd8d609ac67d6c547b9720f5ba605258, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeAnimator: {fileID: 0}
+  levelTextAnimator: {fileID: 0}
+  LevelText: {fileID: 0}
