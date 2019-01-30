@@ -17,7 +17,6 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         GetSpriteWidth();
-        pelota = GameObject.FindGameObjectsWithTag("Pelota")[0];
 
         oldHorizontal = 0;
         posicionX = 0;
@@ -30,25 +29,38 @@ public class PlayerController : MonoBehaviour
 
         if (IAEnabled)
         {
+            //si no hay pelota asignada
+            if (pelota == null)
+            {
+                if (GameObject.FindGameObjectsWithTag("Pelota").Length > 0)
+                {
 
-            //raqueta más a la derecha que la pelota
-            if (transform.position.x > pelota.transform.position.x + 0.5f)
-            {
-                horizontal = Mathf.Lerp(oldHorizontal, -1f, 0.1f);
-                oldHorizontal = horizontal;
-                
-            }
-            //raqueta más a la izquierda que la pelota
-            else if (transform.position.x < pelota.transform.position.x - 0.5f)
-            {
-                horizontal = Mathf.Lerp(oldHorizontal, 1f, 0.1f);
-                oldHorizontal = horizontal;
+                    pelota = GameObject.FindGameObjectsWithTag("Pelota")[0];
+                }
             }
             else
-                horizontal = 0;
+            {
+                //raqueta más a la derecha que la pelota
+                if (transform.position.x > pelota.transform.position.x + 0.5f)
+                {
+                    horizontal = Mathf.Lerp(oldHorizontal, -1f, 0.1f);
+                    oldHorizontal = horizontal;
 
-            posicionX = transform.position.x + horizontal * velocidad * Time.deltaTime;
-            posicionY = transform.position.y;
+                }
+                //raqueta más a la izquierda que la pelota
+                else if (transform.position.x < pelota.transform.position.x - 0.5f)
+                {
+                    horizontal = Mathf.Lerp(oldHorizontal, 1f, 0.1f);
+                    oldHorizontal = horizontal;
+                }
+                else
+                    horizontal = 0;
+
+                posicionX = transform.position.x + horizontal * velocidad * Time.deltaTime;
+                posicionY = transform.position.y;
+            }
+
+            
 
         }
         else

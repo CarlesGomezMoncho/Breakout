@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using TMPro;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
 
@@ -9,20 +11,26 @@ public class GameController : MonoBehaviour
 
     public GameObject raqueta;
     public Transform centroRaqueta;
-    public GameObject pelota;
+    public GameObject pelotaBase;
 
     public GameObject PanelStart;
+    public TextMeshProUGUI livesText;
+    public TextMeshProUGUI DebugText;
 
     public Tilemap tileMap;
+
+    public int lives = 3;
 
     public Animator startAnim;
     public Animator fadeAnim;
     public Animator levelCompletedAnim;
 
-    private BallController ballController;
+    private List<GameObject> listaPelotas;
+
     private PlayerController playerController;
 
     private bool gameStarted = false;
+    private int numBalls = 0;
 
     private void Awake()
     {
@@ -38,42 +46,84 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
-        ballController = pelota.GetComponent<BallController>();
-        ballController.centroRaqueta = centroRaqueta;
-        ballController.tileMap = tileMap;
+
+        listaPelotas = new List<GameObject>();
 
         playerController = raqueta.GetComponent <PlayerController>();
 
         levelCompletedAnim.gameObject.SetActive(false);
 
+        //si no estamos en la intro
         if (SceneManager.GetActiveScene().buildIndex != 0)
         {
             gameStarted = true;
             StartLevel();
+            livesText.text = "Lives: " + lives;
         }
         else
         {
             StartDemo();
+            livesText.text = "";
         }
     }
 
     void Update()
     {
-        //si pulsamos Espacio o botón de salto en un mando
-        if (Input.GetButtonDown("Jump"))
+        //si estamos en demo
+        if (SceneManager.GetActiveScene().buildIndex == 0)
         {
-            //si el juego no está iniciado, lo inicia y carga el primer nivel
-            if (!gameStarted)
+            //si pulsamos Espacio o botón de salto en un mando
+            if (Input.GetButtonDown("Jump"))
             {
+                // inicia el juego 
                 startAnim.SetTrigger("StartGame");
-                //SceneManager.LoadScene(1);
             }
-            //si el juego si está iniciado, inicia el movimiento de la pelota
-            else
+
+            //si se destruye una pelota, iniciamos de nuevo
+            if (numBalls <= 0)
             {
-                ballController.IniciarMovimiento();
+                StartDemo();
             }
         }
+        //si no estamos en demo
+        else
+        {
+            //si pulsamos Espacio o botón de salto en un mando
+            if (Input.GetButtonDown("Jump"))
+            {
+                //si el juego si está iniciado, inicia el movimiento de la primera (y unica) pelota 
+                listaPelotas[0].GetComponent<BallController>().IniciarMovimiento();
+            }
+
+            if (numBalls <= 0)
+            {
+                if (lives > 0)
+                {
+                    lives--;
+                    StartLevel();
+                }
+                else
+                {
+                    //game over
+                    Debug.Log("Game Over");
+                }
+            }
+
+            livesText.text = "Lives: " + lives;
+        }
+    }
+
+    private void AddPelota()
+    {
+        GameObject pelota;
+
+        pelota = Instantiate(pelotaBase);
+
+        pelota.GetComponent<BallController>().centroRaqueta = centroRaqueta;
+        pelota.GetComponent<BallController>().tileMap = tileMap;
+        pelota.GetComponent<BallController>().text = DebugText;
+        listaPelotas.Add(pelota);
+        numBalls++;
 
     }
 
@@ -85,11 +135,14 @@ public class GameController : MonoBehaviour
         //Pone el juego en estado no activo
         gameStarted = false;
 
+        //añadimos una pelota
+        AddPelota();
+
         //reinicia posición pelota
-        pelota.transform.position = new Vector2(centroRaqueta.position.x, centroRaqueta.transform.position.y);
+        listaPelotas[numBalls - 1].transform.position = new Vector2(centroRaqueta.position.x, centroRaqueta.transform.position.y);
 
         //inicia el movimiento de la pelota
-        ballController.IniciarMovimiento();
+        listaPelotas[numBalls - 1].GetComponent<BallController>().IniciarMovimiento();
 
         //inicia IA Raqueta
         playerController.StartIA();
@@ -103,14 +156,19 @@ public class GameController : MonoBehaviour
         //quita el panel start
         PanelStart.SetActive(false);
 
+        //añadimos una pelota
+        AddPelota();
+
         //reinicia posición pelota
-        pelota.transform.position = new Vector2(centroRaqueta.position.x, centroRaqueta.transform.position.y);
+        listaPelotas[numBalls - 1].transform.position = new Vector2(centroRaqueta.position.x, centroRaqueta.transform.position.y);
 
         //para el movimiento de la pelota
-        ballController.PararMovimiento();
+        //ballController.PararMovimiento();
 
         //desactiva IA Raqueta
         playerController.StartIA(false);
+
+
     }
 
     public void EndLevel()
@@ -148,4 +206,13 @@ public class GameController : MonoBehaviour
         return numBlocks;
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Pelota"))
+        {
+            numBalls--;
+            listaPelotas.Remove(collision.gameObject);
+            Destroy(collision.gameObject);
+        }
+    }
 }
