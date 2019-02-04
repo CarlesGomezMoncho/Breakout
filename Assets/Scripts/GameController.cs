@@ -95,8 +95,10 @@ public class GameController : MonoBehaviour
                 listaPelotas[0].GetComponent<BallController>().IniciarMovimiento();
             }
 
-            if (numBalls <= 0)
+            //si no hay pelotas en juego y aun quedan tiles
+            if (numBalls <= 0 && TileCount() > 0)
             {
+                //si quedan vidas
                 if (lives > 0)
                 {
                     lives--;
