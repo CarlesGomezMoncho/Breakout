@@ -19,11 +19,13 @@ public class GameController : MonoBehaviour
 
     public Tilemap tileMap;
 
-    public static int lives = 3;    //para acceso desde cualquier escena y siempre con el mismo valor
+    public int initialLives = 2;
+    public static int lives = 2;    //para acceso desde cualquier escena y siempre con el mismo valor LOS STATICS NO SALEN EN EL INSPECTOR
 
     public Animator startAnim;
     public Animator fadeAnim;
     public Animator levelCompletedAnim;
+    public Animator GameOverAnim;
 
     private List<GameObject> listaPelotas;
 
@@ -77,6 +79,8 @@ public class GameController : MonoBehaviour
             {
                 // inicia el juego 
                 startAnim.SetTrigger("StartGame");
+                //inicializamos las vidas
+                lives = initialLives;
             }
 
             //si se destruye una pelota, iniciamos de nuevo
@@ -88,8 +92,8 @@ public class GameController : MonoBehaviour
         //si no estamos en demo
         else
         {
-            //si pulsamos Espacio o botón de salto en un mando
-            if (Input.GetButtonDown("Jump"))
+            //si hay pelotas y si pulsamos Espacio o botón de salto en un mando
+            if (listaPelotas.Count > 0 && Input.GetButtonDown("Jump"))
             {
                 //si el juego si está iniciado, inicia el movimiento de la primera (y unica) pelota 
                 listaPelotas[0].GetComponent<BallController>().IniciarMovimiento();
@@ -107,7 +111,13 @@ public class GameController : MonoBehaviour
                 else
                 {
                     //game over
-                    Debug.Log("Game Over");
+                    GameOverAnim.SetTrigger("Start");
+
+                    //si pulsamos salto
+                    if (Input.GetButtonDown("Jump"))
+                    {
+                        GameOverAnim.SetTrigger("End");    //reinicia juego
+                    }
                 }
             }
 

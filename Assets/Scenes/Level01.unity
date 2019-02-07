@@ -700,6 +700,11 @@ PrefabInstance:
       propertyPath: livesText
       value: 
       objectReference: {fileID: 533776781816153643}
+    - target: {fileID: 490830857806867169, guid: dc25bb35a6259d540b1e2c89ba316cb6,
+        type: 3}
+      propertyPath: GameOverAnim
+      value: 
+      objectReference: {fileID: 533776781816153644}
     - target: {fileID: 1991996823792721478, guid: dc25bb35a6259d540b1e2c89ba316cb6,
         type: 3}
       propertyPath: m_IsTrigger
@@ -917,6 +922,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &533776781816153644 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3287784254323197017, guid: 02cf1d68eec14474c9bcf38b8f762230,
+    type: 3}
+  m_PrefabInstance: {fileID: 533776781816153639}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1901272233805644765
 PrefabInstance:
   m_ObjectHideFlags: 0

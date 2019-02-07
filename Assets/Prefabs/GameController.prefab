@@ -47,15 +47,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   raqueta: {fileID: 0}
   centroRaqueta: {fileID: 0}
-  pelota: {fileID: 0}
+  pelotaBase: {fileID: 636773657054420210, guid: 9fcc8e2d1aa65d24d831a82b62ff1741,
+    type: 3}
   PanelStart: {fileID: 0}
-  liveText: {fileID: 0}
+  livesText: {fileID: 0}
+  DebugText: {fileID: 0}
   tileMap: {fileID: 0}
-  lives: 3
-  numBalls: 1
   startAnim: {fileID: 0}
   fadeAnim: {fileID: 0}
   levelCompletedAnim: {fileID: 0}
+  GameOverAnim: {fileID: 0}
 --- !u!114 &1003893087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81,7 +82,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -5.49}

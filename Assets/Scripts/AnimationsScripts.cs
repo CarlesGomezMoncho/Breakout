@@ -19,6 +19,11 @@ public class AnimationsScripts : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
+    public void LoadFirstLevel()
+    {
+        SceneManager.LoadScene(0);
+    }
+
     public void AnimateLevelText()
     {
         if (SceneManager.GetActiveScene().buildIndex != 0)

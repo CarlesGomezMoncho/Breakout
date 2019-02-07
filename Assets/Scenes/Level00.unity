@@ -1513,6 +1513,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 89c8bcb41e295db4da21a9c87cfc779b, type: 3}
+--- !u!95 &2131452800 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3287784254323197017, guid: 02cf1d68eec14474c9bcf38b8f762230,
+    type: 3}
+  m_PrefabInstance: {fileID: 533776781816153639}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &490830857780264812
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1592,19 +1598,19 @@ PrefabInstance:
       objectReference: {fileID: 869821597}
     - target: {fileID: 490830857806867169, guid: dc25bb35a6259d540b1e2c89ba316cb6,
         type: 3}
-      propertyPath: pelota
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 490830857806867169, guid: dc25bb35a6259d540b1e2c89ba316cb6,
-        type: 3}
       propertyPath: PanelStart
       value: 
       objectReference: {fileID: 1266307381}
     - target: {fileID: 490830857806867169, guid: dc25bb35a6259d540b1e2c89ba316cb6,
         type: 3}
-      propertyPath: liveText
+      propertyPath: livesText
       value: 
       objectReference: {fileID: 3527923846734188648}
+    - target: {fileID: 490830857806867169, guid: dc25bb35a6259d540b1e2c89ba316cb6,
+        type: 3}
+      propertyPath: DebugText
+      value: 
+      objectReference: {fileID: 595347643}
     - target: {fileID: 490830857806867169, guid: dc25bb35a6259d540b1e2c89ba316cb6,
         type: 3}
       propertyPath: tileMap
@@ -1627,25 +1633,9 @@ PrefabInstance:
       objectReference: {fileID: 1056234032}
     - target: {fileID: 490830857806867169, guid: dc25bb35a6259d540b1e2c89ba316cb6,
         type: 3}
-      propertyPath: pelotaBase
+      propertyPath: GameOverAnim
       value: 
-      objectReference: {fileID: 636773657054420210, guid: 9fcc8e2d1aa65d24d831a82b62ff1741,
-        type: 3}
-    - target: {fileID: 490830857806867169, guid: dc25bb35a6259d540b1e2c89ba316cb6,
-        type: 3}
-      propertyPath: livesText
-      value: 
-      objectReference: {fileID: 3527923846734188648}
-    - target: {fileID: 490830857806867169, guid: dc25bb35a6259d540b1e2c89ba316cb6,
-        type: 3}
-      propertyPath: DebugText
-      value: 
-      objectReference: {fileID: 595347643}
-    - target: {fileID: 1991996823792721478, guid: dc25bb35a6259d540b1e2c89ba316cb6,
-        type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2131452800}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc25bb35a6259d540b1e2c89ba316cb6, type: 3}
 --- !u!1001 &533776781816153639
@@ -1817,6 +1807,26 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 533776782082992590, guid: 02cf1d68eec14474c9bcf38b8f762230,
+        type: 3}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6654444006620168839, guid: 02cf1d68eec14474c9bcf38b8f762230,
+        type: 3}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6654444006620168839, guid: 02cf1d68eec14474c9bcf38b8f762230,
+        type: 3}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5148478360854498203, guid: 02cf1d68eec14474c9bcf38b8f762230,
+        type: 3}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5148478360854498203, guid: 02cf1d68eec14474c9bcf38b8f762230,
         type: 3}
       propertyPath: m_isInputParsingRequired
       value: 1
