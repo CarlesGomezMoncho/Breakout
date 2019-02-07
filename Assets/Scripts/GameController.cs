@@ -19,7 +19,7 @@ public class GameController : MonoBehaviour
 
     public Tilemap tileMap;
 
-    public int lives = 3;
+    public static int lives = 3;    //para acceso desde cualquier escena y siempre con el mismo valor
 
     public Animator startAnim;
     public Animator fadeAnim;

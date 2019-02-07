@@ -13,6 +13,8 @@ public class BallController : MonoBehaviour
     private bool iniciada = false;
     private bool impulsa = false;
 
+    private int numCollisions;
+
     private Rigidbody2D rb;
 
     void Start()
@@ -177,7 +179,14 @@ public class BallController : MonoBehaviour
             //rb.velocity = rb.velocity + new Vector2(x, 0).normalized;
             rb.velocity = new Vector2(rb.velocity.x + x, rb.velocity.y).normalized * rb.velocity.magnitude;
         }
+
+        numCollisions++;
+        Debug.Log(numCollisions);
     }
 
+    public int GetNumCollisions()
+    {
+        return numCollisions;
+    }
     
 }
