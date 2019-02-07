@@ -129,6 +129,15 @@ public class GameController : MonoBehaviour
 
     }
 
+    //quitamos una pelota
+    public void RemovePelota(GameObject pelotaAQuitar)
+    {
+        numBalls--;
+        listaPelotas.Remove(pelotaAQuitar);
+        Destroy(pelotaAQuitar);
+    }
+
+
     public void StartDemo()
     {
         //iniciamos pantalla Start
@@ -208,13 +217,5 @@ public class GameController : MonoBehaviour
         return numBlocks;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Pelota"))
-        {
-            numBalls--;
-            listaPelotas.Remove(collision.gameObject);
-            Destroy(collision.gameObject);
-        }
-    }
+
 }
