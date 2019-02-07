@@ -8,6 +8,8 @@ public class BallController : MonoBehaviour
     public Tilemap tileMap;
     public TextMeshProUGUI text;
 
+    public int intervaloIncremento = 10;
+    public float impulsoIncremento = 0.05f;
     public float fuerzaInicial = 2;
 
     private bool iniciada = false;
@@ -103,7 +105,19 @@ public class BallController : MonoBehaviour
     //impulsa aleatoriamente la pelota hacia arriba
     public void Impulsa(float impulso)
     {
-        rb.AddForce(GetNewDirection() * impulso, ForceMode2D.Impulse);
+        //si no hay una velocidad distinta de 0
+        if (rb.velocity.magnitude != 0)
+        {
+            //solo añade velocidad
+            rb.AddForce(rb.velocity * impulso, ForceMode2D.Impulse);
+        }
+        //si está parada
+        else
+        {
+            //añade una dirección aleatoria y un impulso
+            rb.AddForce(GetNewDirection() * impulso, ForceMode2D.Impulse);
+        }
+        
         impulsa = false;
     }
 
@@ -181,12 +195,11 @@ public class BallController : MonoBehaviour
         }
 
         numCollisions++;
-        Debug.Log(numCollisions);
-    }
 
-    public int GetNumCollisions()
-    {
-        return numCollisions;
+        if (numCollisions % intervaloIncremento == 0)
+        {
+            Impulsa(impulsoIncremento);
+        }
     }
     
 }
