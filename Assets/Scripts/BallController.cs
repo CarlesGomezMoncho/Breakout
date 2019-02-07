@@ -26,42 +26,46 @@ public class BallController : MonoBehaviour
         {
             transform.position = centroRaqueta.position;
         }
-
-        //si se queda fijo en un eje, le modificamos un poco su velocidad
-        if (rb.velocity.x == 0)
+        else
         {
-            float rnd = Random.value;
-            float x;
 
-            if (rnd> 0.5f)
+            //si se queda fijo en un eje, le modificamos un poco su velocidad
+            if (rb.velocity.x <= 0.1f && rb.velocity.x >= -0.1f) 
+            //if (rb.velocity.x == 0)
             {
-                x = 1;
+                float rnd = Random.value;
+                float x;
+
+                if (rnd > 0.5f)
+                {
+                    x = 1;
+                }
+                else
+                {
+                    x = -1;
+                }
+
+                //rb.velocity = rb.velocity + new Vector2(1, 0);
+                rb.velocity = new Vector2(x, rb.velocity.y - 1f).normalized * rb.velocity.magnitude;
             }
-            else
+            if (rb.velocity.y <= 0.1f && rb.velocity.y >= -0.1f)
+            //if (rb.velocity.y == 0)
             {
-                x = -1;
+                float rnd = Random.value;
+                float y;
+
+                if (rnd > 0.5f)
+                {
+                    y = 1;
+                }
+                else
+                {
+                    y = -1;
+                }
+
+                //rb.velocity = rb.velocity + new Vector2(0, 1);
+                rb.velocity = new Vector2(rb.velocity.x - 1f, y).normalized * rb.velocity.magnitude;
             }
-
-            //rb.velocity = rb.velocity + new Vector2(1, 0);
-            rb.velocity = new Vector2(x, rb.velocity.y - 1f).normalized * rb.velocity.magnitude;
-        }
-
-        if (rb.velocity.y == 0)
-        {
-            float rnd = Random.value;
-            float y;
-
-            if (rnd > 0.5f)
-            {
-                y = 1;
-            }
-            else
-            {
-                y = -1;
-            }
-
-            //rb.velocity = rb.velocity + new Vector2(0, 1);
-            rb.velocity = new Vector2(rb.velocity.x - 1f,  y).normalized * rb.velocity.magnitude;
         }
 
         if (text)
