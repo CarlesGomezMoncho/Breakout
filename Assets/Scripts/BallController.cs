@@ -203,6 +203,11 @@ public class BallController : MonoBehaviour
             collisionSound.pitch = 1.2f;
             collisionSound.Play();
         }
+        else if (collision.gameObject.name == "Indestructible")
+        {
+            collisionSound.pitch = 2.0f;
+            collisionSound.Play();
+        }
         else
         {
             //si colisiona con cualquier otra cosa
