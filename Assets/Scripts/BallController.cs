@@ -1,5 +1,6 @@
 ﻿using TMPro;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.Tilemaps;
 
 public class BallController : MonoBehaviour
@@ -19,9 +20,12 @@ public class BallController : MonoBehaviour
 
     private Rigidbody2D rb;
 
+    private AudioSource collisionSound;
+    
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        collisionSound = GetComponents<AudioSource>()[0];
     }
 
     void Update()
@@ -171,6 +175,9 @@ public class BallController : MonoBehaviour
             {
                 GameController.instance.EndLevel();
             }
+
+            collisionSound.pitch = 1.5f;
+            collisionSound.Play();
         }
         else if (collision.gameObject.name == "Raqueta")
         {
@@ -192,6 +199,15 @@ public class BallController : MonoBehaviour
             //sea -1 y asi se modificará en cada golpeo la dirección de la pelota en +1, 0 o -1 dependiendo de la zona en la que golpee la pelota en la raqueta.
             //rb.velocity = rb.velocity + new Vector2(x, 0).normalized;
             rb.velocity = new Vector2(rb.velocity.x + x, rb.velocity.y).normalized * rb.velocity.magnitude;
+
+            collisionSound.pitch = 1.2f;
+            collisionSound.Play();
+        }
+        else
+        {
+            //si colisiona con cualquier otra cosa
+            collisionSound.pitch = 1f;
+            collisionSound.Play();
         }
 
         numCollisions++;

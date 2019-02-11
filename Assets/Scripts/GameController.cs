@@ -34,6 +34,8 @@ public class GameController : MonoBehaviour
     private bool gameStarted = false;
     private int numBalls = 0;
 
+    private AudioSource levelCompletedSound;
+
     private void Awake()
     {
         //If we don't currently have a game control...
@@ -67,6 +69,8 @@ public class GameController : MonoBehaviour
             StartDemo();
             livesText.text = "";
         }
+
+        levelCompletedSound = GetComponents<AudioSource>()[0];
     }
 
     void Update()
@@ -200,6 +204,7 @@ public class GameController : MonoBehaviour
             //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             levelCompletedAnim.gameObject.SetActive(true);
             levelCompletedAnim.SetTrigger("endLevel");
+            levelCompletedSound.Play();
         }
         else
             SceneManager.LoadScene(0);

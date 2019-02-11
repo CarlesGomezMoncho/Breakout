@@ -32,4 +32,18 @@ public class AnimationsScripts : MonoBehaviour
             levelTextAnimator.SetTrigger("Start");
         }
     }
+
+    public void GameOverSound()
+    {
+        AudioSource s;
+        s = GetComponents<AudioSource>()[0];
+        s.Play();
+    }
+
+    public void GameStartSound()
+    {
+        AudioSource s;
+        s = GetComponents<AudioSource>()[0];
+        s.Play();
+    }
 }

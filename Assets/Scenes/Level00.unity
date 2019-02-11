@@ -1811,6 +1811,11 @@ PrefabInstance:
       propertyPath: m_isInputParsingRequired
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6458764550800384426, guid: 02cf1d68eec14474c9bcf38b8f762230,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6654444006620168839, guid: 02cf1d68eec14474c9bcf38b8f762230,
         type: 3}
       propertyPath: m_havePropertiesChanged
@@ -1820,6 +1825,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_isInputParsingRequired
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6654444006620168839, guid: 02cf1d68eec14474c9bcf38b8f762230,
+        type: 3}
+      propertyPath: m_firstOverflowCharacterIndex
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5148478360854498203, guid: 02cf1d68eec14474c9bcf38b8f762230,
         type: 3}
