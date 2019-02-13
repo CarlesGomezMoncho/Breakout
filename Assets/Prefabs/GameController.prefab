@@ -60,6 +60,8 @@ MonoBehaviour:
   fadeAnim: {fileID: 0}
   levelCompletedAnim: {fileID: 0}
   GameOverAnim: {fileID: 0}
+  agrandarItem: {fileID: 8265910570934704485, guid: fe75cdb20cadf2f4880c89b865b92b92,
+    type: 3}
 --- !u!114 &1003893087
 MonoBehaviour:
   m_ObjectHideFlags: 0

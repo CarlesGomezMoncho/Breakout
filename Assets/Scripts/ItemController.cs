@@ -27,7 +27,7 @@ public class ItemController : MonoBehaviour
         {
             PlayerController p = collision.gameObject.GetComponent<PlayerController>();
 
-            if (gameObject.name == "AgrandarItem")
+            if (gameObject.tag == "AgrandarItem")
             {
                 p.IncreaseScale(new Vector2(0.5f, 0));  //incrementamos en 1 el ancho de la raqueta
                 p.GetSpriteWidth();                     //para reajustar el limite de movimiento

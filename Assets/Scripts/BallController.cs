@@ -178,6 +178,7 @@ public class BallController : MonoBehaviour
 
             collisionSound.pitch = 1.5f;
             collisionSound.Play();
+            GameController.instance.CreateItem(hitPosition);
         }
         else if (collision.gameObject.name == "Raqueta")
         {

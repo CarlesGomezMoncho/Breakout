@@ -27,6 +27,8 @@ public class GameController : MonoBehaviour
     public Animator levelCompletedAnim;
     public Animator GameOverAnim;
 
+    public GameObject agrandarItem;
+
     private List<GameObject> listaPelotas;
 
     private PlayerController playerController;
@@ -230,6 +232,12 @@ public class GameController : MonoBehaviour
         }
 
         return numBlocks;
+    }
+
+    public void CreateItem(Vector2 position)
+    {
+        GameObject item = Instantiate(agrandarItem);
+        item.transform.position = position;
     }
 
 
