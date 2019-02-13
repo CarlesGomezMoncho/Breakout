@@ -17,6 +17,10 @@ public class BallDestroyer : MonoBehaviour
         {
             StartCoroutine(DestroyBall(collision.gameObject, 1.5f));
         }
+        else if (collision.gameObject.layer == LayerMask.NameToLayer("Item"))
+        {
+            Destroy(collision.gameObject);
+        }
     }
 
     private IEnumerator DestroyBall(GameObject ball, float seconds = 0)
