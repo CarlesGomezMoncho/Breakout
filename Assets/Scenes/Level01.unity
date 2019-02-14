@@ -947,6 +947,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 490830857806867169, guid: dc25bb35a6259d540b1e2c89ba316cb6,
         type: 3}
+      propertyPath: itemsInLevel.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 490830857806867169, guid: dc25bb35a6259d540b1e2c89ba316cb6,
+        type: 3}
       propertyPath: raqueta
       value: 
       objectReference: {fileID: 1958347071}
@@ -1012,6 +1017,24 @@ PrefabInstance:
       propertyPath: GameOverAnim
       value: 
       objectReference: {fileID: 533776781816153644}
+    - target: {fileID: 490830857806867169, guid: dc25bb35a6259d540b1e2c89ba316cb6,
+        type: 3}
+      propertyPath: itemsInLevel.Array.data[0]
+      value: 
+      objectReference: {fileID: 8265910570934704485, guid: fe75cdb20cadf2f4880c89b865b92b92,
+        type: 3}
+    - target: {fileID: 490830857806867169, guid: dc25bb35a6259d540b1e2c89ba316cb6,
+        type: 3}
+      propertyPath: itemsInLevel.Array.data[1]
+      value: 
+      objectReference: {fileID: 8265910570934704485, guid: fe75cdb20cadf2f4880c89b865b92b92,
+        type: 3}
+    - target: {fileID: 490830857806867169, guid: dc25bb35a6259d540b1e2c89ba316cb6,
+        type: 3}
+      propertyPath: itemsInLevel.Array.data[2]
+      value: 
+      objectReference: {fileID: 8265910570934704485, guid: fe75cdb20cadf2f4880c89b865b92b92,
+        type: 3}
     - target: {fileID: 1991996823792721478, guid: dc25bb35a6259d540b1e2c89ba316cb6,
         type: 3}
       propertyPath: m_IsTrigger

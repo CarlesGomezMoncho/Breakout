@@ -29,6 +29,8 @@ public class GameController : MonoBehaviour
 
     public GameObject agrandarItem;
 
+    public List<GameObject> itemsInLevel;
+
     private List<GameObject> listaPelotas;
 
     private PlayerController playerController;
@@ -127,7 +129,7 @@ public class GameController : MonoBehaviour
                 }
             }
 
-            livesText.text = "Lives: " + lives;
+            livesText.text = "Balls: " + lives;
         }
     }
 
@@ -195,7 +197,11 @@ public class GameController : MonoBehaviour
         //desactiva IA Raqueta
         playerController.StartIA(false);
 
+        //reseteamos posibles estados alterados de la raqueta
+        playerController.ResetState();
 
+        //quitamos items en pantalla
+        RemoveAllItems();
     }
 
     public void EndLevel()
@@ -236,9 +242,32 @@ public class GameController : MonoBehaviour
 
     public void CreateItem(Vector2 position)
     {
-        GameObject item = Instantiate(agrandarItem);
-        item.transform.position = position;
+        int numItems = itemsInLevel.Count;
+
+        //si quedan items intentamos crear uno
+        if (numItems > 0)
+        {
+            int numTiles = TileCount() + 1; //se suma 1 por que en este momento ya no se cuenta el tile que se acaba de destruir (y hay que contarlo)
+            int rand = Random.Range(0, numTiles);
+
+            //si el numero aleatoria cae dentro del numero de items que quedan
+            if (rand < numItems)
+            {
+                GameObject item = Instantiate(agrandarItem);
+                item.transform.position = position;
+                itemsInLevel.RemoveAt(rand);
+            }
+        }
     }
 
-
+    public void RemoveAllItems()
+    {
+        foreach (GameObject g in FindObjectsOfType<GameObject>())
+        {
+            if (g.layer == LayerMask.NameToLayer("Item"))
+            {
+                Destroy(g);
+            }
+        }
+    }
 }

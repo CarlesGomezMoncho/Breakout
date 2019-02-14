@@ -30,7 +30,6 @@ public class ItemController : MonoBehaviour
             if (gameObject.tag == "AgrandarItem")
             {
                 p.IncreaseScale(new Vector2(0.5f, 0));  //incrementamos en 1 el ancho de la raqueta
-                p.GetSpriteWidth();                     //para reajustar el limite de movimiento
 
                 GetComponent<SpriteRenderer>().sprite = null;   //Quitamos el sprite para que deje de verse inmediatamente (por que tardará algo de tiempo en destruirse el objeto para que suene el sonido)
 

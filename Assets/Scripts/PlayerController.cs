@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
 
     private float oldHorizontal;
 
-    private Vector2 initScale;
+    private Vector2 initSpriteSize, initColliderSize;
 
     void Start()
     {
@@ -24,7 +24,8 @@ public class PlayerController : MonoBehaviour
         posicionX = 0;
         posicionY = transform.position.y;
 
-        initScale = transform.localScale;
+        initSpriteSize = GetComponent<SpriteRenderer>().size;
+        initColliderSize = GetComponent<BoxCollider2D>().size;
     }
 
     void Update()
@@ -117,6 +118,15 @@ public class PlayerController : MonoBehaviour
     {
         GetComponent<SpriteRenderer>().size += increaseScale;
         GetComponent<BoxCollider2D>().size += increaseScale;
+        GetSpriteWidth();   //para reajustar el limite de movimiento
+
     }
 
+    public void ResetState()
+    {
+        GetComponent<SpriteRenderer>().size = initSpriteSize;
+        GetComponent<BoxCollider2D>().size = initColliderSize;
+
+        GetSpriteWidth();   //para reajustar el limite de movimiento
+    }
 }
