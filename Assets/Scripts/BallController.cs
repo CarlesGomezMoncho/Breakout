@@ -15,6 +15,9 @@ public class BallController : MonoBehaviour
 
     private bool iniciada = false;
     private bool impulsa = false;
+    private bool destroying = false;
+
+    private Vector2 directionToCopy = Vector2.zero;
 
     private int numCollisions;
 
@@ -107,15 +110,20 @@ public class BallController : MonoBehaviour
     }
 
     //impulsa aleatoriamente la pelota hacia arriba
-    public void Impulsa(float impulso)
+    public void Impulsa(float impulso = 0, bool forceNewDirection = false)
     {
-        //si no hay una velocidad distinta de 0
-        if (rb.velocity.magnitude != 0)
+        if (impulso == 0)
+        {
+            impulso = fuerzaInicial;
+        }
+
+        //si ya esta en movimiento y no forzamos nueva dirección
+        if (rb.velocity.magnitude != 0 && !forceNewDirection)
         {
             //solo añade velocidad
             rb.AddForce(rb.velocity * impulso, ForceMode2D.Impulse);
         }
-        //si está parada
+        //si está parada o forzamos nueva direccion
         else
         {
             //añade una dirección aleatoria y un impulso
@@ -136,9 +144,15 @@ public class BallController : MonoBehaviour
     {
         Vector2 direction;
 
-        int randY = 1;
+        float randY = 1;
         float randX = Random.Range(-0.5f, 0.5f); //valores entre -45º y 45º
         //float randX = 0;  //para debug, sale completamente vertical
+
+        if (directionToCopy != Vector2.zero)
+        {
+            if (directionToCopy.y < 0)
+            randY = -1;
+        }
 
         direction = new Vector2(randX, randY);
 
@@ -223,5 +237,29 @@ public class BallController : MonoBehaviour
             Impulsa(impulsoIncremento);
         }
     }
+
+    public void SetImpulsa(bool impulsa)
+    {
+        this.impulsa = impulsa;
+    }
+
+    public void SetIniciada(bool iniciada)
+    {
+        this.iniciada = iniciada;
+    }
     
+    public bool IsDestroying()
+    {
+        return destroying;
+    }
+
+    public void SetDestroying(bool value)
+    {
+        destroying = value;
+    }
+
+    public void SetDirectionToCopy(Vector2 directionToCopy)
+    {
+        this.directionToCopy = directionToCopy;
+    }
 }

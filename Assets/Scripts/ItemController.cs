@@ -23,20 +23,45 @@ public class ItemController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.GetComponent<PlayerController>())
-        {
-            PlayerController p = collision.gameObject.GetComponent<PlayerController>();
+        PlayerController p = collision.gameObject.GetComponent<PlayerController>();
 
+        //si choca con un objeto que tenga este componente (si choca con la raqueta)
+        if (p)
+        {
             if (gameObject.tag == "AgrandarItem")
             {
-                p.IncreaseScale(new Vector2(0.5f, 0));  //incrementamos en 1 el ancho de la raqueta
+                //incrementamos en 1 el ancho de la raqueta
+                p.IncreaseScale(new Vector2(0.5f, 0));  
+            }
+            else if (gameObject.tag == "3BolesItem" )//&& GameController.instance.)
+            {
+                GameObject newBall;
+                GameObject lastBall = GameController.instance.GetRandomBall();
 
-                GetComponent<SpriteRenderer>().sprite = null;   //Quitamos el sprite para que deje de verse inmediatamente (por que tardará algo de tiempo en destruirse el objeto para que suene el sonido)
+                if (lastBall)
+                {
+                    Vector2 firstBallPosition = lastBall.transform.position;
 
-                DestroyItem();  //destruye el item al contactar con la raqueta
+                    //creamos 2 bolas mas
+                    newBall = GameController.instance.AddPelota();
+                    newBall.transform.position = new Vector2(firstBallPosition.x - (newBall.GetComponent<SpriteRenderer>().sprite.bounds.size.x * 2), firstBallPosition.y);
+                    newBall.GetComponent<BallController>().SetImpulsa(true);
+                    newBall.GetComponent<BallController>().SetIniciada(true);
+                    newBall.GetComponent<BallController>().SetDirectionToCopy(lastBall.GetComponent<Rigidbody2D>().velocity);
+
+                    newBall = GameController.instance.AddPelota();
+                    newBall.transform.position = new Vector2(firstBallPosition.x + (newBall.GetComponent<SpriteRenderer>().sprite.bounds.size.x * 2), firstBallPosition.y);
+                    newBall.GetComponent<BallController>().SetImpulsa(true);
+                    newBall.GetComponent<BallController>().SetIniciada(true);
+                    newBall.GetComponent<BallController>().SetDirectionToCopy(lastBall.GetComponent<Rigidbody2D>().velocity);
+                }
             }
 
-            
+            GetComponent<SpriteRenderer>().sprite = null;   //Quitamos el sprite para que deje de verse inmediatamente (por que tardará algo de tiempo en destruirse el objeto para que suene el sonido)
+            DestroyItem();  //destruye el item al contactar con la raqueta
+
+
+
         }
     }
 

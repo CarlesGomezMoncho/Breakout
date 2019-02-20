@@ -29,6 +29,9 @@ public class BallDestroyer : MonoBehaviour
         {
             liveLostSound.Play();
         }
+
+        ball.GetComponent<BallController>().SetDestroying(true);
+
         yield return new WaitForSeconds(seconds);
         GameController.instance.RemovePelota(ball);
     }

@@ -27,15 +27,13 @@ public class GameController : MonoBehaviour
     public Animator levelCompletedAnim;
     public Animator GameOverAnim;
 
-    public GameObject agrandarItem;
-
     public List<GameObject> itemsInLevel;
 
     private List<GameObject> listaPelotas;
 
     private PlayerController playerController;
 
-    private bool gameStarted = false;
+    //private bool gameStarted = false;
     private int numBalls = 0;
 
     private AudioSource levelCompletedSound;
@@ -64,7 +62,7 @@ public class GameController : MonoBehaviour
         //si no estamos en la intro
         if (SceneManager.GetActiveScene().buildIndex != 0)
         {
-            gameStarted = true;
+            //gameStarted = true;
             StartLevel();
             livesText.text = "Lives: " + lives;
         }
@@ -133,18 +131,26 @@ public class GameController : MonoBehaviour
         }
     }
 
-    private void AddPelota()
+    public GameObject AddPelota(Transform posicion = null)
     {
         GameObject pelota;
+        BallController bController; 
 
         pelota = Instantiate(pelotaBase);
+        bController = pelota.GetComponent<BallController>();
 
-        pelota.GetComponent<BallController>().centroRaqueta = centroRaqueta;
-        pelota.GetComponent<BallController>().tileMap = tileMap;
-        pelota.GetComponent<BallController>().text = DebugText;
+        if (posicion == null)
+        {
+            posicion = listaPelotas[0].transform;   //la posición de la primera pelota
+        }
+
+        bController.centroRaqueta = posicion;
+        bController.tileMap = tileMap;
+        bController.text = DebugText;
         listaPelotas.Add(pelota);
         numBalls++;
 
+        return pelota;
     }
 
     //quitamos una pelota
@@ -162,10 +168,10 @@ public class GameController : MonoBehaviour
         PanelStart.SetActive(true);
 
         //Pone el juego en estado no activo
-        gameStarted = false;
+        //gameStarted = false;
 
         //añadimos una pelota
-        AddPelota();
+        AddPelota(centroRaqueta);
 
         //reinicia posición pelota
         listaPelotas[numBalls - 1].transform.position = new Vector2(centroRaqueta.position.x, centroRaqueta.transform.position.y);
@@ -180,13 +186,13 @@ public class GameController : MonoBehaviour
     public void StartLevel()
     {
         //pone el juego en estado activo
-        gameStarted = true;
+        //gameStarted = true;
 
         //quita el panel start
         PanelStart.SetActive(false);
 
         //añadimos una pelota
-        AddPelota();
+        AddPelota(centroRaqueta);
 
         //reinicia posición pelota
         listaPelotas[numBalls - 1].transform.position = new Vector2(centroRaqueta.position.x, centroRaqueta.transform.position.y);
@@ -253,7 +259,7 @@ public class GameController : MonoBehaviour
             //si el numero aleatoria cae dentro del numero de items que quedan
             if (rand < numItems)
             {
-                GameObject item = Instantiate(agrandarItem);
+                GameObject item = Instantiate(itemsInLevel[rand]);
                 item.transform.position = position;
                 itemsInLevel.RemoveAt(rand);
             }
@@ -269,5 +275,25 @@ public class GameController : MonoBehaviour
                 Destroy(g);
             }
         }
+    }
+
+    //coge una pelota aleatoria si quedan
+    public GameObject GetRandomBall()
+    {
+        GameObject g = null;
+
+        while (g == null)
+        {
+            //coge una pelota aleatoria
+            g = listaPelotas[Random.Range(0, listaPelotas.Count)];
+
+            //si solo hay 1 y va a destruir-se
+            if (listaPelotas.Count == 1 && g.GetComponent<BallController>().IsDestroying())
+            {
+                return null;
+            }
+        }
+
+        return g;
     }
 }

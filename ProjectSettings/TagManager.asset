@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Pelota
   - AgrandarItem
+  - 3BolesItem
   layers:
   - Default
   - TransparentFX
