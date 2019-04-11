@@ -1,9 +1,19 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
     public float limiteHorizontal = 10;
     public float velocidad = 10;
+<<<<<<< HEAD
+    public float maxTimeBetweenBullets = 1;
+    public float minHoldTime = 0.25f;    //temps maxim de apretar, si se sobrepasa se considera que no es tap, i per tant no dispararà o soltarà la pilota
+
+    public GameObject bullet;
+    public Transform gun1;
+    public Transform gun2;
+=======
+>>>>>>> parent of 768f72d... Molts canvis i bugs arreglats
 
     private float spriteWidth;
     private GameObject pelota;
@@ -16,6 +26,10 @@ public class PlayerController : MonoBehaviour
 
     private Vector2 initSpriteSize, initColliderSize;
 
+    private Vector2 touchPosition;
+
+    private float startHoldTime = 0;
+
     void Start()
     {
         GetSpriteWidth();
@@ -24,8 +38,21 @@ public class PlayerController : MonoBehaviour
         posicionX = 0;
         posicionY = transform.position.y;
 
+<<<<<<< HEAD
+        raquetaNormal.SetActive(true);
+
+        //initSpriteSize = GetComponent<SpriteRenderer>().size;
+        //initColliderSize = GetComponent<BoxCollider2D>().size;
+        initSpriteSizeNormal = raquetaNormal.GetComponent<SpriteRenderer>().size;
+        initColliderSizeNormal = raquetaNormal.GetComponent<BoxCollider2D>().size;
+        initSpriteSizeDispar = raquetaDispar.GetComponent<SpriteRenderer>().size;
+        initColliderSizeDispar = raquetaDispar.GetComponent<BoxCollider2D>().size;
+
+        limiteHorizontal = limiteHorizontalRaquetaNormal;
+=======
         initSpriteSize = GetComponent<SpriteRenderer>().size;
         initColliderSize = GetComponent<BoxCollider2D>().size;
+>>>>>>> parent of 768f72d... Molts canvis i bugs arreglats
     }
 
     void Update()
@@ -65,7 +92,7 @@ public class PlayerController : MonoBehaviour
                 posicionY = transform.position.y;
             }
 
-            
+
 
         }
         else
@@ -74,9 +101,83 @@ public class PlayerController : MonoBehaviour
 
             if (horizontal != 0)
             {
-                posicionX = transform.position.x + horizontal * velocidad * Time.deltaTime;
+                posicionX = transform.position.x + horizontal * velocidad * 5 * Time.deltaTime; //multipliquem per a accelarar, ja que està configurat per a mobil i no per a teclat
                 posicionY = transform.position.y;
 
+            }
+          
+            if (Input.touchCount > 0)
+            {
+                Touch touch = Input.GetTouch(0);
+
+                //si comença a presionar
+                if (touch.phase == TouchPhase.Began)
+                {
+                    //guardem posició inicial, que es la que gastarem per a restar a la del moviment i la sumarem a la paleta
+                    touchPosition = touch.position;
+
+                    StarHolding();
+                }
+                else if (touch.phase == TouchPhase.Moved)
+                {
+                    Vector2 pos = touch.position;
+
+                    //canviem la posició actual per la inicial - la nova
+                    posicionX = transform.position.x - ((touchPosition.x - pos.x) * velocidad * Time.deltaTime);
+                    posicionY = transform.position.y;
+
+                    //actualitzem posicio inicial
+                    touchPosition = pos;
+                }
+                else if (touch.phase == TouchPhase.Ended)
+                {
+                    List<GameObject> listaPelotas = GameController.instance.GetListaPelotas();
+                    
+                    //si hay pelotas y si tap pantalla
+                    if (listaPelotas.Count > 0 && EndHolding() <= minHoldTime)
+                    {
+                        //iniciamos movimiento de todas las pelotas
+                        foreach (GameObject g in listaPelotas)
+                        {
+                            g.GetComponent<BallController>().IniciarMovimiento();
+                            g.GetComponent<BallController>().Despegar();
+                        }
+
+                        //si estamos en raqueta de disparo
+                        if (GameController.instance.GetActiveRaqueta() == "DisparItem")
+                        {
+                            GameObject bullet = Shoot();
+                            if (bullet)
+                            {
+                                bullet.GetComponent<BulletController>().tileMap = GameController.instance.tileMap;
+                            }
+                        }
+                    }
+                }
+            }
+            //
+            else if (Input.GetButtonDown("Jump") || Input.GetMouseButtonDown(0))
+            {
+                List<GameObject> listaPelotas = GameController.instance.GetListaPelotas();
+
+                if (listaPelotas.Count > 0)
+                {
+                    //iniciamos movimiento de todas las pelotas
+                    foreach (GameObject g in listaPelotas)
+                    {
+                        g.GetComponent<BallController>().IniciarMovimiento();
+                        g.GetComponent<BallController>().Despegar();
+                    }
+                    //si estamos en raqueta de disparo
+                    if (GameController.instance.GetActiveRaqueta() == "DisparItem")
+                    {
+                        GameObject bullet = Shoot();
+                        if (bullet)
+                        {
+                            bullet.GetComponent<BulletController>().tileMap = GameController.instance.tileMap;
+                        }
+                    }
+                }
             }
         }
 
@@ -128,5 +229,15 @@ public class PlayerController : MonoBehaviour
         GetComponent<BoxCollider2D>().size = initColliderSize;
 
         GetSpriteWidth();   //para reajustar el limite de movimiento
+    }
+
+    private void StarHolding()
+    {
+        startHoldTime = Time.time;
+    }
+
+    private float EndHolding()
+    {
+        return Time.time - startHoldTime;
     }
 }

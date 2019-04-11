@@ -47,7 +47,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71e063b0d47bb0b4c85a0e08534e4a1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   raqueta: {fileID: 0}
+  raquetaDispar: {fileID: 0}
+  raquetaApegalosa: {fileID: 0}
   centroRaqueta: {fileID: 0}
   pelotaBase: {fileID: 636773657054420210, guid: 9fcc8e2d1aa65d24d831a82b62ff1741,
     type: 3}
@@ -60,8 +63,9 @@ MonoBehaviour:
   fadeAnim: {fileID: 0}
   levelCompletedAnim: {fileID: 0}
   GameOverAnim: {fileID: 0}
-  agrandarItem: {fileID: 8265910570934704485, guid: fe75cdb20cadf2f4880c89b865b92b92,
-    type: 3}
+  itemsInLevel:
+  - {fileID: 8265910570934704485, guid: 6923fc91308765f4497a2ae894c23545, type: 3}
+  - {fileID: 8265910570934704485, guid: c5de71032bfcb754ba2fdc4a86695077, type: 3}
 --- !u!114 &1003893087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -90,7 +94,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -5.49}
+  m_Offset: {x: 0, y: -5.79}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}

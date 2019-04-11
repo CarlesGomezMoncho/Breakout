@@ -164,7 +164,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 13
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1303,7 +1303,7 @@ PrefabInstance:
     - target: {fileID: 1901272232544531317, guid: 89c8bcb41e295db4da21a9c87cfc779b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.8
+      value: -9.22
       objectReference: {fileID: 0}
     - target: {fileID: 1901272232544531317, guid: 89c8bcb41e295db4da21a9c87cfc779b,
         type: 3}
@@ -1364,7 +1364,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Raqueta
       objectReference: {fileID: 0}
+<<<<<<< HEAD
+    - target: {fileID: 3439335222965879920, guid: aeb4d0a29cda4ad409c678d2bc6ae290,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3439335222965879922, guid: aeb4d0a29cda4ad409c678d2bc6ae290,
+=======
     - target: {fileID: 3428352320741881428, guid: 04f72935b582c2b4790bfb9e6cc501c9,
+>>>>>>> parent of 768f72d... Molts canvis i bugs arreglats
         type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1419,6 +1428,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+<<<<<<< HEAD
+    - target: {fileID: 3439335222965879923, guid: aeb4d0a29cda4ad409c678d2bc6ae290,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 30
+      objectReference: {fileID: 0}
+=======
+>>>>>>> parent of 768f72d... Molts canvis i bugs arreglats
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 04f72935b582c2b4790bfb9e6cc501c9, type: 3}
 --- !u!1001 &3439335223127939977
@@ -1433,7 +1450,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Background
       objectReference: {fileID: 0}
+<<<<<<< HEAD
+    - target: {fileID: 8745320725943863231, guid: af7dc3d02ccb9e145b7b3cbdfddf150e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8745320725895902029, guid: af7dc3d02ccb9e145b7b3cbdfddf150e,
+=======
     - target: {fileID: 3439335222965879922, guid: aeb4d0a29cda4ad409c678d2bc6ae290,
+>>>>>>> parent of 768f72d... Molts canvis i bugs arreglats
         type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1441,7 +1467,11 @@ PrefabInstance:
     - target: {fileID: 3439335222965879922, guid: aeb4d0a29cda4ad409c678d2bc6ae290,
         type: 3}
       propertyPath: m_LocalPosition.y
+<<<<<<< HEAD
+      value: -8
+=======
       value: 0
+>>>>>>> parent of 768f72d... Molts canvis i bugs arreglats
       objectReference: {fileID: 0}
     - target: {fileID: 3439335222965879922, guid: aeb4d0a29cda4ad409c678d2bc6ae290,
         type: 3}
@@ -1488,10 +1518,32 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+<<<<<<< HEAD
+    - target: {fileID: 1431959269144418234, guid: af7dc3d02ccb9e145b7b3cbdfddf150e,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8745320725943863228, guid: af7dc3d02ccb9e145b7b3cbdfddf150e,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8745320727385251574, guid: af7dc3d02ccb9e145b7b3cbdfddf150e,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1431959269144418244, guid: af7dc3d02ccb9e145b7b3cbdfddf150e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+=======
     - target: {fileID: 3439335222965879923, guid: aeb4d0a29cda4ad409c678d2bc6ae290,
         type: 3}
       propertyPath: m_Size.y
       value: 13.66
+>>>>>>> parent of 768f72d... Molts canvis i bugs arreglats
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aeb4d0a29cda4ad409c678d2bc6ae290, type: 3}

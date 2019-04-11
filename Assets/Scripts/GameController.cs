@@ -81,7 +81,7 @@ public class GameController : MonoBehaviour
         if (SceneManager.GetActiveScene().buildIndex == 0)
         {
             //si pulsamos Espacio o botón de salto en un mando
-            if (Input.GetButtonDown("Jump"))
+            if (Input.GetButtonDown("Jump") || Input.GetMouseButtonDown(0))
             {
                 // inicia el juego 
                 startAnim.SetTrigger("StartGame");
@@ -98,12 +98,37 @@ public class GameController : MonoBehaviour
         //si no estamos en demo
         else
         {
-            //si hay pelotas y si pulsamos Espacio o botón de salto en un mando
-            if (listaPelotas.Count > 0 && Input.GetButtonDown("Jump"))
+            /*
+            //si hay pelotas y si pulsamos Espacio o botón de salto en un mando o tap (click) pantalla
+            if (listaPelotas.Count > 0 && (Input.GetButtonDown("Jump") || Input.GetMouseButtonDown(0)))
             {
+<<<<<<< HEAD
+                //iniciamos movimiento de todas las pelotas
+                foreach (GameObject g in listaPelotas)
+                {
+                    g.GetComponent<BallController>().IniciarMovimiento();
+                }
+                //si la primera pelota no está iniciada, inicia el movimiento de la primera (y unica) pelota 
+                //si ya estaba iniciada (iniciar devuelve falso)
+                //if (!listaPelotas[0].GetComponent<BallController>().IniciarMovimiento())
+                //{
+                    //si estamos en raqueta de disparo
+                    if (activeRaqueta == "DisparItem")
+                    {
+                        GameObject bullet = playerController.Shoot();
+                        if (bullet)
+                        {
+                            bullet.GetComponent<BulletController>().tileMap = tileMap;
+                        }
+                    }
+                //}
+                
+            }*/
+=======
                 //si el juego si está iniciado, inicia el movimiento de la primera (y unica) pelota 
                 listaPelotas[0].GetComponent<BallController>().IniciarMovimiento();
             }
+>>>>>>> parent of 768f72d... Molts canvis i bugs arreglats
 
             //si no hay pelotas en juego y aun quedan tiles
             if (numBalls <= 0 && TileCount() > 0)
@@ -120,7 +145,7 @@ public class GameController : MonoBehaviour
                     GameOverAnim.SetTrigger("Start");
 
                     //si pulsamos salto
-                    if (Input.GetButtonDown("Jump"))
+                    if (Input.GetButtonDown("Jump") || Input.GetMouseButtonDown(0))
                     {
                         GameOverAnim.SetTrigger("End");    //reinicia juego
                     }
@@ -129,6 +154,32 @@ public class GameController : MonoBehaviour
 
             livesText.text = "Balls: " + lives;
         }
+<<<<<<< HEAD
+
+        if (debugText)
+        {
+            debugText.text = "";
+            foreach(GameObject pelota in listaPelotas)
+            {
+                debugText.text += pelota.name + ": " + "direction: " + pelota.GetComponent<Rigidbody2D>().velocity.normalized.ToString();
+                debugText.text += " Velocity: " + pelota.GetComponent<Rigidbody2D>().velocity.magnitude;
+                debugText.text += "\n";
+            }
+            debugText.text += "[";
+            foreach (GameObject pelota in listaPelotas)
+            {
+                debugText.text += pelota.name + ",";
+            }
+            debugText.text += "]\n";
+            debugText.text += "Num pilotes: " + listaPelotas.Count;
+            debugText.text += "\n " + activeRaqueta;
+        }
+
+        
+
+
+=======
+>>>>>>> parent of 768f72d... Molts canvis i bugs arreglats
     }
 
     public GameObject AddPelota(Transform posicion = null)
@@ -208,6 +259,12 @@ public class GameController : MonoBehaviour
 
         //quitamos items en pantalla
         RemoveAllItems();
+<<<<<<< HEAD
+
+        //cambiamos a raqueta base, por si tenemos otra
+        SwitchRaqueta("DisparItem");
+=======
+>>>>>>> parent of 768f72d... Molts canvis i bugs arreglats
     }
 
     public void EndLevel()
@@ -296,4 +353,60 @@ public class GameController : MonoBehaviour
 
         return g;
     }
+<<<<<<< HEAD
+
+    public void SwitchRaqueta(string type)
+    {
+        if (type == "DisparItem")
+        {
+            raqueta.SetActive(false);
+            raquetaDispar.SetActive(true);
+            raquetaApegalosa.SetActive(false);
+        }
+        else if (type == "")
+        {
+            //si el tipo es "" es que el item se destruye de alguna otra forma y no tiene que hacer nada
+            return;//no hace nada mas de lo despues del if
+        }
+        else if (type == "ExtraItem")
+        {
+            //si coge una vida extra no cambia de raqueta, se queda con la que tenia antes de cogerlo
+            //cambiamos el type al que estaba antes
+            type = activeRaqueta;
+        }
+        else if (type == "ApegalosaItem")
+        {
+            raqueta.SetActive(false);
+            raquetaDispar.SetActive(false);
+            raquetaApegalosa.SetActive(true);
+        }
+        else
+        {
+            raqueta.SetActive(true);
+            raquetaDispar.SetActive(false);
+            raquetaApegalosa.SetActive(false);
+        }
+
+        activeRaqueta = type;
+
+        playerController.GetSpriteWidth();  //para ajustar limites de raqueta
+    }
+
+    public string GetActiveRaqueta()
+    {
+        return activeRaqueta;
+    }
+
+    public Vector3 GetCentroRaqueta()
+    {
+        return centroRaqueta.position;
+    }
+
+    //la llista de pilotes no deuria de estar aci, sino en el playerController :(
+    public List<GameObject> GetListaPelotas()
+    {
+        return listaPelotas;
+    }
+=======
+>>>>>>> parent of 768f72d... Molts canvis i bugs arreglats
 }

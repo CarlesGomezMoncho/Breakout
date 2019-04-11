@@ -24,6 +24,8 @@ public class BallController : MonoBehaviour
     private Rigidbody2D rb;
 
     private AudioSource collisionSound;
+
+    private bool despegar = false;  //si s'ha de despegar la pilota
     
     void Start()
     {
@@ -35,7 +37,23 @@ public class BallController : MonoBehaviour
     {
         if (!iniciada)
         {
+<<<<<<< HEAD
+            transform.position = GameController.instance.GetCentroRaqueta();
+        }
+        else if (pegada)
+        {
+            gameObject.transform.position = GameController.instance.GetCentroRaqueta() - desviacionDesdelCentro;
+            //if (Input.GetButtonDown("Jump") && rb.velocity.magnitude < 0.1f)
+            if (despegar && rb.velocity.magnitude < 0.1f)
+            {
+                pegada = false;
+                rb.velocity = oldVelocity;
+                despegar = false;
+            }
+
+=======
             transform.position = centroRaqueta.position;
+>>>>>>> parent of 768f72d... Molts canvis i bugs arreglats
         }
         else
         {
@@ -262,4 +280,18 @@ public class BallController : MonoBehaviour
     {
         this.directionToCopy = directionToCopy;
     }
+<<<<<<< HEAD
+
+    public string getName()
+    {
+        return gameObject.name;
+    }
+
+    public void Despegar()
+    {
+        if (pegada)
+            despegar = true;
+    }
+=======
+>>>>>>> parent of 768f72d... Molts canvis i bugs arreglats
 }

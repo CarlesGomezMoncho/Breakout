@@ -118,6 +118,43 @@ Animator:
     type: 3}
   m_PrefabInstance: {fileID: 533776781816153639}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
+--- !u!1 &193191331 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8745320725895902030, guid: af7dc3d02ccb9e145b7b3cbdfddf150e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1837816185}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &219641944 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 533776782055215435, guid: 02cf1d68eec14474c9bcf38b8f762230,
+    type: 3}
+  m_PrefabInstance: {fileID: 533776781816153639}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &219641948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 219641944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 1
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 1280, y: 720}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+=======
+>>>>>>> parent of 768f72d... Molts canvis i bugs arreglats
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -170,7 +207,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 13
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1369,6 +1406,82 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
+--- !u!1001 &1837816185
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8745320725895902030, guid: af7dc3d02ccb9e145b7b3cbdfddf150e,
+        type: 3}
+      propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8745320725895902029, guid: af7dc3d02ccb9e145b7b3cbdfddf150e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8745320725895902029, guid: af7dc3d02ccb9e145b7b3cbdfddf150e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8745320725895902029, guid: af7dc3d02ccb9e145b7b3cbdfddf150e,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8745320725895902029, guid: af7dc3d02ccb9e145b7b3cbdfddf150e,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8745320725895902029, guid: af7dc3d02ccb9e145b7b3cbdfddf150e,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8745320725895902029, guid: af7dc3d02ccb9e145b7b3cbdfddf150e,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8745320725895902029, guid: af7dc3d02ccb9e145b7b3cbdfddf150e,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8745320725895902029, guid: af7dc3d02ccb9e145b7b3cbdfddf150e,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8745320725895902029, guid: af7dc3d02ccb9e145b7b3cbdfddf150e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8745320725895902029, guid: af7dc3d02ccb9e145b7b3cbdfddf150e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8745320725895902029, guid: af7dc3d02ccb9e145b7b3cbdfddf150e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 267414779, guid: af7dc3d02ccb9e145b7b3cbdfddf150e, type: 3}
+      propertyPath: velocidad
+      value: 2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: af7dc3d02ccb9e145b7b3cbdfddf150e, type: 3}
+=======
+>>>>>>> parent of 768f72d... Molts canvis i bugs arreglats
 --- !u!1001 &1862690455
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1464,7 +1577,7 @@ PrefabInstance:
     - target: {fileID: 1901272232544531317, guid: 89c8bcb41e295db4da21a9c87cfc779b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.66
+      value: -9.22
       objectReference: {fileID: 0}
     - target: {fileID: 1901272232544531317, guid: 89c8bcb41e295db4da21a9c87cfc779b,
         type: 3}
@@ -1660,6 +1773,16 @@ PrefabInstance:
       propertyPath: m_isInputParsingRequired
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 533776781304172188, guid: 02cf1d68eec14474c9bcf38b8f762230,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 35.58
+      objectReference: {fileID: 0}
+    - target: {fileID: 533776781304172188, guid: 02cf1d68eec14474c9bcf38b8f762230,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 35.58
+      objectReference: {fileID: 0}
     - target: {fileID: 533776782055215432, guid: 02cf1d68eec14474c9bcf38b8f762230,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1765,6 +1888,21 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 533776782055215432, guid: 02cf1d68eec14474c9bcf38b8f762230,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 533776782055215432, guid: 02cf1d68eec14474c9bcf38b8f762230,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 533776782055215432, guid: 02cf1d68eec14474c9bcf38b8f762230,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3527923846734188648, guid: 02cf1d68eec14474c9bcf38b8f762230,
         type: 3}
       propertyPath: m_havePropertiesChanged
@@ -1855,10 +1993,28 @@ PrefabInstance:
       propertyPath: m_Name
       value: Raqueta
       objectReference: {fileID: 0}
+<<<<<<< HEAD
+    - target: {fileID: 1430883199, guid: 02cf1d68eec14474c9bcf38b8f762230, type: 3}
+      propertyPath: m_isInputParsingRequired
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1430883199, guid: 02cf1d68eec14474c9bcf38b8f762230, type: 3}
+      propertyPath: m_fontSize
+      value: 173.38
+      objectReference: {fileID: 0}
+    - target: {fileID: 1430883199, guid: 02cf1d68eec14474c9bcf38b8f762230, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 173.38
+      objectReference: {fileID: 0}
+    - target: {fileID: 1430883199, guid: 02cf1d68eec14474c9bcf38b8f762230, type: 3}
+      propertyPath: m_margin.w
+      value: -486.3863
+=======
     - target: {fileID: 3428352320741881428, guid: 04f72935b582c2b4790bfb9e6cc501c9,
         type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
+>>>>>>> parent of 768f72d... Molts canvis i bugs arreglats
       objectReference: {fileID: 0}
     - target: {fileID: 3428352320741881428, guid: 04f72935b582c2b4790bfb9e6cc501c9,
         type: 3}
@@ -1895,6 +2051,38 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+<<<<<<< HEAD
+    - target: {fileID: 533776782055215433, guid: 02cf1d68eec14474c9bcf38b8f762230,
+        type: 3}
+      propertyPath: m_PixelPerfect
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 533776781304172189, guid: 02cf1d68eec14474c9bcf38b8f762230,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 533776781304172189, guid: 02cf1d68eec14474c9bcf38b8f762230,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 533776781304172189, guid: 02cf1d68eec14474c9bcf38b8f762230,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 533776781304172189, guid: 02cf1d68eec14474c9bcf38b8f762230,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 533776781304172189, guid: 02cf1d68eec14474c9bcf38b8f762230,
+        type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+=======
     - target: {fileID: 3428352320741881428, guid: 04f72935b582c2b4790bfb9e6cc501c9,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1910,6 +2098,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+>>>>>>> parent of 768f72d... Molts canvis i bugs arreglats
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 04f72935b582c2b4790bfb9e6cc501c9, type: 3}
 --- !u!114 &3527923846734188648 stripped
